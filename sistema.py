@@ -1,5 +1,5 @@
 from responsavel import Responsavel
-import menu
+from getpass import getpass
 
 
 class Sistema:
@@ -15,7 +15,7 @@ class Sistema:
             return False
         nova_conta = Responsavel(login, senha)
         self._contas[login] = nova_conta
-        print("Conta cadastrada com sucesso!")
+        print("\n**Conta cadastrada com sucesso!**\n")
 
     def autenticar(self, login: str, senha: str):
         if login not in self._contas:
@@ -29,20 +29,21 @@ class Sistema:
 
     def login_menu(self):
         login = input("Informe o seu nome de usuário: ")
-        senha = input("Informe a sua senha: ")
+        senha = getpass("Informe a sua senha: ")
 
         conta = self.autenticar(login, senha)
         if not conta:
-            print("Dados inválidos. Tente novamente.\n")
+            print("\nDados inválidos. Tente novamente.\n")
         else:
+            print("\n**Logado com sucesso!**\n")
             conta.menu_conta()
 
     def cadastro_menu(self):
         login = input("Informe o nome de usuário a ser cadastrado: ")
-        senha = input("Informe a sua senha: ")
+        senha = getpass("Informe a sua senha: ")
 
         if login in self._contas:
-            print("Conta já existente.\n")
+            print("\nConta já existente.\n")
             return
 
         return self.cadastrar_conta(login, senha)

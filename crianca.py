@@ -10,7 +10,10 @@ class Crianca:
         self.sexo = sexo
         self.registros: dict[date, tuple] = {}
 
-    def registrar_evolucao(self, peso, altura):
+    def registrar_desenvolvimento(self, peso, altura):
         data = date.today()
         self.registros[data] = (peso, altura)
-        print("**Cadastro de evolução feito com sucesso!**\n")
+        print("\n**Cadastro de evolução feito com sucesso!**\n")
+
+    def exibir_desenvolvimento(self):
+        raise NotImplementedError

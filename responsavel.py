@@ -17,31 +17,37 @@ class Responsavel:
             opcoes_conta = {
                 1: self.registrar_desenvolvimento_menu,
                 2: self.cadastrar_filho_menu,
-                3: None
+                3: self.exibir_desenvolvimento_menu,
+                4: None
             }
 
-            opcao = int(input("Digite uma opção: "))
+            try:
+                opcao = int(input("Digite uma opção: "))
+            except ValueError:
+                print("\nOpção inválida. Digite novamente.")
+                continue
             if opcao not in opcoes_conta:
                 return False
-            elif opcao == 3:
+            elif opcao == 4:
                 break
             opcoes_conta[opcao]()
 
     def listar_filhos(self):
-        print("Filhos cadastrados: ")
+        print("\nFilhos cadastrados: ")
         for nome in self._filhos.keys():
             print("\t" + nome)
+        print('\n')
 
     def cadastrar_filho(self, nome, peso, altura, data_nasc, sexo):
         novo_filho = Crianca(nome, peso, altura, data_nasc, sexo)
         self._filhos[nome] = novo_filho
-        print("Filho(a) cadastrado com sucesso\n")
+        print("\nFilho(a) cadastrado com sucesso\n")
         return True
 
     def cadastrar_filho_menu(self):
         nome_filho = input("Informe o nome do(a) filho(a) a ser cadastrado: ")
         if nome_filho in self._filhos:
-            print("Filho já cadastrado\n")
+            print("\nFilho já cadastrado\n")
             return False
 
         peso = float(input("Informe o peso do(a) filho(a) em KG: "))
@@ -52,13 +58,32 @@ class Responsavel:
         return self.cadastrar_filho(nome_filho, peso, altura, data_nascimento, sexo)
 
     def registrar_desenvolvimento_menu(self):
+        if len(self._filhos) == 0:
+            print("\nNão há filhos cadastrados\n")
+            return False
+
         self.listar_filhos()
         nome_filho = input("Informe o nome do(a) filho(a): ")
         if nome_filho not in self._filhos:
+            print("\nFilho(a) não cadastrado.\n")
             return False
 
         filho = self._filhos[nome_filho]
-        nova_altura = int(input("Informe a nova altura do(a) filho(a) em CM: "))
         novo_peso = float(input("Informe o novo peso do(a) filho(a) em KG: "))
+        nova_altura = int(input("Informe a nova altura do(a) filho(a) em CM: "))
 
-        return filho.registrar_evolucao(novo_peso, nova_altura)
+        return filho.registrar_desenvolvimento(novo_peso, nova_altura)
+
+    def exibir_desenvolvimento_menu(self):
+        if len(self._filhos) == 0:
+            print("\nNão há filhos cadastrados\n")
+            return False
+
+        self.listar_filhos()
+        nome_filho = input("Informe o nome do(a) filho(a): ")
+        if nome_filho not in self._filhos:
+            print("\nFilho(a) não cadastrado.\n")
+            return False
+
+        filho = self._filhos[nome_filho]
+        return filho.exibir_desenvolvimento()
