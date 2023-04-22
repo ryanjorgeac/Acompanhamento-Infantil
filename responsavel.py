@@ -1,3 +1,4 @@
+from matplotlib import pyplot as plt
 from crianca import Crianca
 import menu
 
@@ -17,13 +18,14 @@ class Responsavel:
             opcoes_conta = {
                 1: self.registrar_desenvolvimento_menu,
                 2: self.cadastrar_filho_menu,
-                3: None
+                3: self.visualizar_graficos_evolucao,
+                4: None
             }
 
             opcao = int(input("Digite uma opção: "))
             if opcao not in opcoes_conta:
                 return False
-            elif opcao == 3:
+            elif opcoes_conta[opcao] is None:
                 break
             opcoes_conta[opcao]()
 
@@ -62,3 +64,14 @@ class Responsavel:
         novo_peso = float(input("Informe o novo peso do(a) filho(a) em KG: "))
 
         return filho.registrar_evolucao(novo_peso, nova_altura)
+    
+    def visualizar_graficos_evolucao(self):
+        for nome, filho in self._filhos.items():
+            plt.plot(filho.data_nascimento(), filho.peso_nascimento(), label='Peso')
+            plt.plot(filho.data_nascimento(), filho.altura_nascimento(), label='Altura')
+            plt.title(f"Evolução de {nome}")
+            plt.xlabel("Data")
+            plt.ylabel("Peso/Altura")
+            plt.legend()
+            plt.show()
+
