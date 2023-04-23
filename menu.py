@@ -8,5 +8,5 @@ def print_menu_login():
 def print_menu_conta():
     print('1 - Registrar novo tamanho e peso')
     print('2 - Cadastrar novo filho(a)')
-    print('3 - Exibir desenvolvimento de um(a) filho(a)')
-    print('4 - Voltar\n')
+    print('3 - Ver gráficos de evolução')
+    print('4 - Sair')
