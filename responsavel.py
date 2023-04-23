@@ -8,8 +8,14 @@ class Responsavel:
         self._senha = senha
         self._filhos: dict[str, Crianca] = dict()
 
+    def __str__(self):
+        return f"{self._login}&{self._senha}"
+
     def get_senha(self):
         return self._senha
+
+    def get_filhos(self):
+        return self._filhos
 
     def menu_conta(self):
         while True:
@@ -53,7 +59,7 @@ class Responsavel:
         peso = float(input("Informe o peso do(a) filho(a) em KG: "))
         altura = int(input("Informe a altura do(a) filho(a) em CM: "))
         data_nascimento = input("Informe a data de nascimento do(a) filho(a) no formato AAAA-MM-DD: ")
-        sexo = input("Informe o sexo do(a) filho(a) (M ou F): ")
+        sexo = input("Informe o sexo do(a) filho(a) (M ou F): ").upper()
 
         return self.cadastrar_filho(nome_filho, peso, altura, data_nascimento, sexo)
 
@@ -71,8 +77,9 @@ class Responsavel:
         filho = self._filhos[nome_filho]
         novo_peso = float(input("Informe o novo peso do(a) filho(a) em KG: "))
         nova_altura = int(input("Informe a nova altura do(a) filho(a) em CM: "))
+        data_registro = input("Quando foi medido? (AAAA-MM-DD): ")
 
-        return filho.registrar_desenvolvimento(novo_peso, nova_altura)
+        return filho.registrar_desenvolvimento(novo_peso, nova_altura, data_registro)
 
     def exibir_desenvolvimento_menu(self):
         if len(self._filhos) == 0:
@@ -86,4 +93,8 @@ class Responsavel:
             return False
 
         filho = self._filhos[nome_filho]
-        return filho.exibir_desenvolvimento()
+        opcao = input("Deseja acompanhar o desenvolvimento pela altura ou pelo peso? ")
+        if opcao.lower() == "altura":
+            return filho.acompanhar_desenvolvimento_altura()
+        else:
+            return filho.acompanhar_desenvolvimento_peso()

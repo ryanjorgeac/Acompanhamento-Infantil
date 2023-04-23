@@ -1,7 +1,6 @@
 from responsavel import Responsavel
 from getpass import getpass
 
-
 class Sistema:
     def __init__(self):
         self._contas: dict[str, Responsavel] = dict()
