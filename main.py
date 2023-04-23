@@ -1,21 +1,29 @@
-import sistema
-import menu
+from sistema import Sistema
+from menu import print_menu_login
 
 
 def main():
-    sys = sistema.Sistema()
+    sys = Sistema()
     opcoes_iniciais = {
         1: sys.login_menu,
         2: sys.cadastro_menu,
         3: None
     }
+    print("*** Bem-vindo ao Sistema de Acompanhamento Infantil ***\n")
 
     while True:
-        menu.print_menu_login()
-        opcao = int(input("Digite uma opção: "))
+        print_menu_login()
+        try:
+            opcao = int(input("Digite uma opção: "))
+        except ValueError:
+            print("\nOpção inválida. Digite novamente.")
+            continue
+
         if opcao not in opcoes_iniciais:
-            print("Opção inválida. Digite Novamente.")
+            print("\nOpção inválida. Digite Novamente.")
+            continue
         elif opcao == 3:
+            print("Saindo...")
             break
         opcoes_iniciais[opcao]()
 
