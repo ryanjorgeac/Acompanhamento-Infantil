@@ -51,6 +51,7 @@ def grafico_altura_ate_2(crianca):
 
     marcadores = list(range(0, 25, 1))
     nomes_marcadores = [f"{x // 12} anos" if x % 12 == 0 else x for x in marcadores]
+    nomes_marcadores[0] = "Nascimento"
     plt.xticks(marcadores, nomes_marcadores, fontsize=8)
     xticks = plt.xticks()
     for i in range(len(xticks[0])):
