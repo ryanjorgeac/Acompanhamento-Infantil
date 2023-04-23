@@ -36,9 +36,7 @@ class Crianca:
 
     def calcular_idade(self, data: datetime = None):
         data_atual = data or datetime.now()
-        print(data_atual)
         diferenca_datas = relativedelta(data_atual, self._data_nascimento)
-        print(diferenca_datas)
         idade_meses = diferenca_datas.years * 12 + diferenca_datas.months + diferenca_datas.days / 31
         return round(idade_meses)
 
@@ -53,7 +51,6 @@ class Crianca:
 
     def acompanhar_desenvolvimento_altura(self):
         idade_crianca = self.calcular_idade()
-        print(idade_crianca)
         if idade_crianca <= 24:
             grafico_altura_ate_2(self)
         elif idade_crianca <= 60:

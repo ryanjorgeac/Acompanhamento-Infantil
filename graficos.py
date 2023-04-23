@@ -47,7 +47,7 @@ def grafico_altura_ate_2(crianca):
     plt.ylim(0, 24)
     plt.yticks(range(40, 105, 5))
     plt.xticks(range(0, 25, 1))
-
+    plt.tight_layout()
     plt.show()
 
 
@@ -66,8 +66,6 @@ def grafico_altura_ate_5(crianca):
             idades.append(idade)
             alturas.append(altura)
 
-    print(idades)
-    print(alturas)
     plt.plot(idades, alturas, label=f"Desenvolvimento de {crianca.get_nome()}")
 
     if crianca.get_sexo() == "M":
@@ -81,9 +79,7 @@ def grafico_altura_ate_5(crianca):
     plt.ylabel('Altura (cm)')
     plt.yticks(range(75, 130, 5))
     plt.xticks(range(24, 61, 2))
-
     plt.tight_layout()
-
     plt.show()
 
 
@@ -98,9 +94,9 @@ def grafico_altura_ate_10(crianca):
         data = list(item.keys())[0]
         idade = crianca.calcular_idade(data)
         altura = list(item.values())[0][1]
-
-        idades.append(idade)
-        alturas.append(altura)
+        if idade >= 60 and altura >= 90:
+            idades.append(idade)
+            alturas.append(altura)
 
     plt.plot(idades, alturas, label=f"Desenvolvimento de {crianca.get_nome()}")
 
@@ -115,7 +111,7 @@ def grafico_altura_ate_10(crianca):
     plt.ylabel('Altura (cm)')
     plt.yticks(range(90, 165, 5))
     plt.xticks(range(60, 121, 1))
-
+    plt.tight_layout()
     plt.show()
 
 def grafico_peso_ate_2(crianca):
@@ -128,10 +124,10 @@ def grafico_peso_ate_2(crianca):
     for item in crianca.get_desenvolvimento():
         data = list(item.keys())[0]
         idade = crianca.calcular_idade(data)
-        peso = list(item.values())[0][0]
-
-        idades.append(idade)
-        pesos.append(peso)
+        peso = list(item.values())[0][1]
+        if idade <= 24 and peso <= 18:
+            idades.append(idade)
+            pesos.append(peso)
 
     plt.plot(idades, pesos, label=f"Desenvolvimento de {crianca.get_nome()}")
 
@@ -146,7 +142,7 @@ def grafico_peso_ate_2(crianca):
     plt.ylabel('Peso (kg)')
     plt.yticks(range(1, 19, 1))
     plt.xticks(range(0, 25, 1))
-
+    plt.tight_layout()
     plt.show()
 
 def grafico_peso_ate_5(crianca):
@@ -159,10 +155,10 @@ def grafico_peso_ate_5(crianca):
     for item in crianca.get_desenvolvimento():
         data = list(item.keys())[0]
         idade = crianca.calcular_idade(data)
-        peso = list(item.values())[0][0]
-
-        idades.append(idade)
-        pesos.append(peso)
+        peso = list(item.values())[0][1]
+        if idade >= 24 and peso >= 7:
+            idades.append(idade)
+            pesos.append(peso)
 
     plt.plot(idades, pesos, label=f"Desenvolvimento de {crianca.get_nome()}")
 
@@ -190,10 +186,10 @@ def grafico_peso_ate_10(crianca):
     for item in crianca.get_desenvolvimento():
         data = list(item.keys())[0]
         idade = crianca.calcular_idade(data)
-        peso = list(item.values())[0][0]
-
-        idades.append(idade)
-        pesos.append(peso)
+        peso = list(item.values())[0][1]
+        if idade >= 60 and peso >= 10:
+            idades.append(idade)
+            pesos.append(peso)
 
     plt.plot(idades, pesos, label=f"Desenvolvimento de {crianca.get_nome()}")
 
