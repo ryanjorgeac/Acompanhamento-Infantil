@@ -1,5 +1,3 @@
-import sistema
-
 
 def print_menu_login():
     print('1 - Fazer Login')

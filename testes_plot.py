@@ -3,8 +3,6 @@ import numpy as np
 
 plt.style.use('_mpl-gallery')
 # make data
-x = np.linspace(0, 24, 24)
-y = 4 + 2 * np.sin(2 * x)
 
 # plot
 fig, ax = plt.subplots(figsize=(8, 5))  # Altura do gráfico
