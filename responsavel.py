@@ -1,4 +1,4 @@
-from matplotlib import pyplot as plt
+import crianca
 from crianca import Crianca
 import menu
 
@@ -99,3 +99,9 @@ class Responsavel:
             return filho.acompanhar_desenvolvimento_altura()
         else:
             return filho.acompanhar_desenvolvimento_peso()
+
+
+def responsavel_teste():
+    responsavel = Responsavel("donamaria", "camarao123")
+    responsavel._filhos["José"] = crianca.crianca_teste()
+    return responsavel

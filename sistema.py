@@ -1,9 +1,10 @@
+import responsavel
 from responsavel import Responsavel
 from getpass import getpass
 
 class Sistema:
     def __init__(self):
-        self._contas: dict[str, Responsavel] = dict()
+        self._contas: dict[str, Responsavel] = {"donamaria": responsavel.responsavel_teste()}
 
     def cadastrar_conta(self, login: str, senha: str) -> bool:
         if login is None:
@@ -15,6 +16,7 @@ class Sistema:
         nova_conta = Responsavel(login, senha)
         self._contas[login] = nova_conta
         print("\n**Conta cadastrada com sucesso!**\n")
+        print(self._contas)
 
     def autenticar(self, login: str, senha: str):
         if login not in self._contas:

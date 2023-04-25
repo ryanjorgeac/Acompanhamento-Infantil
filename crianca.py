@@ -61,16 +61,15 @@ class Crianca:
             grafico_altura_ate_10(self)
 
 
-if __name__ == "__main__":
-    crianca = Crianca("Ryan", 3, 45, "2017-02-17", 'F')
+def crianca_teste():
+    crianca = Crianca("José", 3, 45, "2017-02-17", 'F')
     crianca.registrar_desenvolvimento(9.8, 50, "2018-02-17")
     crianca.registrar_desenvolvimento(12, 55, "2019-01-17")
-    crianca.registrar_desenvolvimento(12.3, 87, "2019-03-17")
-    crianca.registrar_desenvolvimento(13, 89, "2019-04-17")
-    crianca.registrar_desenvolvimento(14.7, 94, "2020-05-17")
-    crianca.registrar_desenvolvimento(17, 97, "2021-06-17")
-    crianca.registrar_desenvolvimento(18.5, 110, "2022-03-17")
-    crianca.registrar_desenvolvimento(19, 111, "2022-04-17")
-    crianca.registrar_desenvolvimento(20, 112, "2022-05-17")
-    crianca.acompanhar_desenvolvimento_altura()
-    crianca.acompanhar_desenvolvimento_peso()
+    # crianca.registrar_desenvolvimento(12.3, 87, "2019-03-17")
+    # crianca.registrar_desenvolvimento(13, 89, "2019-04-17")
+    # crianca.registrar_desenvolvimento(14.7, 94, "2020-05-17")
+    # crianca.registrar_desenvolvimento(17, 97, "2021-06-17")
+    # crianca.registrar_desenvolvimento(18.5, 110, "2022-03-17")
+    # crianca.registrar_desenvolvimento(19, 111, "2022-04-17")
+    # crianca.registrar_desenvolvimento(20, 112, "2022-05-17")
+    return crianca
